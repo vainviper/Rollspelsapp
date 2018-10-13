@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Rollspelsapp</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700|Oxygen" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/BS_rollspelsapp.css" />
+</head>
+<body onload="startUpTopBars()">
+    <div class="backgroundCover"></div>
+    
+    
+
+    
+                <nav class="navbar navbar-expand-lg navbar-dark border-bottom">
+            <a class="navbar-brand" href="#">Rustningsguide</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                                
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="mainbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-map-signs"></i> Huvudmeny
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="mainbarDropdown">
+                            <a class="dropdown-item" href="index.html">Rustningsguide</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="hitDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-bullseye"></i> Träfftabeller
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="hitDropdown">
+                            <a class="dropdown-item hitMenuPart" href="#"id="humanoidHigh" onclick="hitmenuClick(id)">Sikta högt</a>
+                            <a class="dropdown-item hitMenuPart" href="#"id="humanoidWhole" onclick="hitmenuClick(id)">Sikta inte</a>
+                            <a class="dropdown-item hitMenuPart" href="#"id="humanoidLow" onclick="hitmenuClick(id)">Sikta lågt</a>
+                            <a class="dropdown-item hitMenuPart" href="#"id="humanoidAimHead" onclick="hitmenuClick(id)">Sikta på huvud</a>
+                            <a class="dropdown-item hitMenuPart" href="#"id="humanoidAimRightArm" onclick="hitmenuClick(id)">Sikta på höger arm</a>
+                            <a class="dropdown-item hitMenuPart" href="#"id="humanoidAimLeftArm" onclick="hitmenuClick(id)">Sikta på vänster arm</a>
+                            <a class="dropdown-item hitMenuPart" href="#"id="humanoidAimCenter" onclick="hitmenuClick(id)">Sikta mot bröst</a>
+                            <a class="dropdown-item hitMenuPart" href="#"id="humanoidAimRightLeg" onclick="hitmenuClick(id)">Sikta på höger ben</a>
+                            <a class="dropdown-item hitMenuPart" href="#"id="humanoidAimLeftLeg" onclick="hitmenuClick(id)">Sikta på vänster ben</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="armors" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-shield-alt"></i> Rustningar
+                        </a>
+                        <div id="armorsDiv" class="clickProof dropdown-menu" aria-labelledby="armors">
+                            <a class="clickProof dropdown-item armorTitle" href="#" onclick="clearAllArmor()">Rensa rustning</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li>
+                        <a class="nav-link"></a>
+                    </li>
+                    <li>
+                        <a class="nav-link"><i class="fas fa-user-plus"></i> Register</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#"><i class="fas fa-user"></i> Login</a>
+                    </li>
+                </ul>
+            </div> 
+                </nav>
+                <div class="refElement"></div>
+                <div id="dropdownMenu">
+                        <div id="skull_drop" class="clickProof subMenu1"> 
+                                <h5 class="clickProof indented">Skalle</h5>                      
+                                <a id="skull_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                                    <div id="skull_drop_1_drop" class="clickProof subMenu2">
+            
+                                    </div>
+                                <a id="skull_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                                    <div id="skull_drop_2_drop" class="clickProof subMenu2">   
+                                    
+                                    </div>
+                                <a id="skull_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                                    <div id="skull_drop_3_drop" class="clickProof subMenu2">   
+                                
+                                    </div>
+                                <a id="skull_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                                    <div id="skull_drop_4_drop" class="clickProof subMenu2">
+            
+                                    </div>
+                        </div>
+                        <div id="face_drop" class="clickProof subMenu1"> 
+                            <h5 class="clickProof indented">Ansikte</h5>                      
+                            <a id="face_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                                <div id="face_drop_1_drop" class="clickProof subMenu2">
+            
+                                </div>
+                            <a id="face_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                                <div id="face_drop_2_drop" class="clickProof subMenu2">   
+                                
+                                </div>
+                            <a id="face_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                                <div id="face_drop_3_drop" class="clickProof subMenu2">   
+                            
+                                </div>
+                            <a id="face_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                                <div id="face_drop_4_drop" class="clickProof subMenu2">
+            
+                                </div>
+                        </div>
+                        <div id="neck_drop" class="clickProof subMenu1"> 
+                            <h5 class="clickProof indented">Nacke</h5>                      
+                            <a id="neck_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                                <div id="neck_drop_1_drop" class="clickProof subMenu2">
+                
+                                </div>
+                            <a id="neck_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                                <div id="neck_drop_2_drop" class="clickProof subMenu2">   
+                                        
+                                </div>
+                            <a id="neck_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                                <div id="neck_drop_3_drop" class="clickProof subMenu2">   
+                                    
+                                </div>
+                            <a id="neck_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                                <div id="neck_drop_4_drop" class="clickProof subMenu2">
+                
+                                </div>
+                        </div>
+                        <div id="ls_drop" class="clickProof subMenu1"> 
+                            <h5 class="clickProof indented">Vänster axel</h5>                      
+                            <a id="ls_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                                <div id="ls_drop_1_drop" class="clickProof subMenu2">
+            
+                                </div>
+                            <a id="ls_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                                <div id="ls_drop_2_drop" class="clickProof subMenu2">   
+                                
+                                </div>
+                            <a id="ls_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                                <div id="ls_drop_3_drop" class="clickProof subMenu2">   
+                            
+                                </div>
+                            <a id="ls_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                                <div id="ls_drop_4_drop" class="clickProof subMenu2">
+            
+                                </div>
+                    </div>
+                    <div id="lua_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Vänster överarm</h5>                      
+                        <a id="lua_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="lua_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="lua_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="lua_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="lua_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="lua_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="lua_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="lua_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="le_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Vänster armbåge</h5>                      
+                        <a id="le_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="le_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="le_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="le_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="le_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="le_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="le_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="le_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="lla_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Vänster underarm</h5>                      
+                        <a id="lla_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="lla_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="lla_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="lla_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="lla_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="lla_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="lla_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="lla_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="lh_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Vänster hand</h5>                      
+                        <a id="lh_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="lh_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="lh_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="lh_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="lh_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="lh_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="lh_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="lh_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="rs_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Höger axel</h5>                      
+                        <a id="rs_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="rs_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="rs_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="rs_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="rs_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="rs_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="rs_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="rs_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="rua_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Höger överarm</h5>                      
+                        <a id="rua_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="rua_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="rua_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="rua_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="rua_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="rua_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="rua_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="rua_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="re_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Höger armbåge</h5>                      
+                        <a id="re_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="re_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="re_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="re_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="re_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="re_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="re_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="re_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="rla_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Höger underarm</h5>                      
+                        <a id="rla_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="rla_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="rla_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="rla_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="rla_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="rla_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="rla_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="rla_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="rh_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Höger hand</h5>                      
+                        <a id="rh_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="rh_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="rh_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="rh_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="rh_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="rh_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="rh_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="rh_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="chest_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Bröst</h5>                      
+                        <a id="chest_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="chest_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="chest_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="chest_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="chest_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="chest_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="chest_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="chest_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="stomach_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Mage</h5>                      
+                        <a id="stomach_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="stomach_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="stomach_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="stomach_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="stomach_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="stomach_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="stomach_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="stomach_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="groin_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Skrev</h5>                      
+                        <a id="groin_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="groin_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="groin_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="groin_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="groin_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="groin_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="groin_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="groin_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="lhip_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Vänster höft</h5>                      
+                        <a id="lhip_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="lhip_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="lhip_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="lhip_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="lhip_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="lhip_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="lhip_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="lhip_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="lt_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Vänster lår</h5>                      
+                        <a id="lt_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="lt_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="lt_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="lt_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="lt_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="lt_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="lt_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="lt_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="lk_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Vänster knä</h5>                      
+                        <a id="lk_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="lk_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="lk_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="lk_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="lk_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="lk_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="lk_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="lk_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="lc_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Vänster vad</h5>                      
+                        <a id="lc_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="lc_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="lc_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="lc_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="lc_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="lc_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="lc_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="lc_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="lf_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Vänster fot</h5>                      
+                        <a id="lf_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="lf_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="lf_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="lf_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="lf_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="lf_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="lf_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="lf_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="rhip_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Höger höft</h5>                      
+                        <a id="rhip_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="rhip_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="rhip_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="rhip_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="rhip_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="rhip_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="rhip_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="rhip_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="rt_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Höger lår</h5>                      
+                        <a id="rt_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="rt_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="rt_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="rt_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="rt_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="rt_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="rt_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="rt_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="rk_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Höger knä</h5>                      
+                        <a id="rk_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="rk_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="rk_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="rk_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="rk_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="rk_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="rk_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="rk_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="rc_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Höger vad</h5>                      
+                        <a id="rc_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="rc_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="rc_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="rc_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="rc_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="rc_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="rc_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="rc_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                    <div id="rf_drop" class="clickProof subMenu1"> 
+                        <h5 class="clickProof indented">Höger fot</h5>                      
+                        <a id="rf_drop_1" class="clickProof dropdown-item" href="#">Underlager</a><br>                     
+                            <div id="rf_drop_1_drop" class="clickProof subMenu2">
+            
+                            </div>
+                        <a id="rf_drop_2" class="clickProof dropdown-item" href="#">Mellanlager</a><br>                      
+                            <div id="rf_drop_2_drop" class="clickProof subMenu2">   
+                            
+                            </div>
+                        <a id="rf_drop_3" class="clickProof dropdown-item" href="#">Ytterlager</a><br>                     
+                            <div id="rf_drop_3_drop" class="clickProof subMenu2">   
+                        
+                            </div>
+                        <a id="rf_drop_4" class="clickProof dropdown-item" href="#">Extralager</a><br>                      
+                            <div id="rf_drop_4_drop" class="clickProof subMenu2">
+            
+                            </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+        <div id="first_row" class="row">
+            <div id="column_one_row_one" class="col-xs-12 col-lg-4">
+                <button id="krossButton" onclick="writeToTheTable(1)" type="button" class="btn btn-outline-light btn-sm">Kross</button>
+                <button id="huggButton" onclick="writeToTheTable(0)" type="button" class="btn btn-outline-light btn-sm">Hugg</button>
+                <button id="stickButton" onclick="writeToTheTable(2)" type="button" class="btn btn-outline-light btn-sm">Stick</button>
+                <div class="refElement"></div>
+                <img id ="armorManImg" src="images/stridsgubbe.gif" alt="Combat Figure" width="332" height="727" usemap="#clickTheChar">
+                <map name="clickTheChar">
+                        <area id="skull" class="clickProof newAreaMenu" shape="poly" alt="Skull" coords="121,88,107,85,97,68,96,47,104,23,127,9,150,5,172,12,183,35,183,44,165,38,149,38,130,41,120,50" 
+                            style="outline: none;" target="_self">
+                        <area id="face" class="clickProof newAreaMenu" shape="poly" alt="Face" coords="139,103,123,87,120,66,121,47,138,40,158,36,182,42,181,71,169,99" 
+                            style="outline: none;" target="_self">
+                        <area id="neck" class="clickProof newAreaMenu" shape="poly" alt="Neck" coords="92,120,117,131,145,132,180,121,167,100,144,105,123,89,107,85" 
+                            style="outline:none;" target="_self">
+                        <area id="chest" class="clickProof newAreaMenu" shape="poly" alt="Chest" coords="94,121,118,131,146,132,173,122,185,125,203,146,213,173,208,193,206,215,202,233,173,230,123,231,74,238,66,212,63,199,61,176,67,152" 
+                            style="outline:none;" target="_self">
+                        <area id="stomach" class="clickProof newAreaMenu" shape="poly" alt="Stomach" coords="71,238,111,231,153,230,201,233,197,260,197,284,198,303,174,330,156,346,137,352,117,346,93,326,72,300" 
+                            style="outline:none;" target="_self">
+                        <area id="ls" class="clickProof newAreaMenu" shape="poly" alt="Left Shoulder" coords="208,200,208,188,213,179,211,167,183,122,212,125,237,145,244,169,246,190,232,198,220,201" 
+                            style="outline:none;" target="_self">
+                        <area id="lua" class="clickProof newAreaMenu" shape="poly" alt="Left Upper Arm" coords="208,199,219,202,235,196,247,186,246,209,242,233,229,236,220,240,208,245,202,234" 
+                            style="outline:none;" target="_self">
+                        <area id="le" class="clickProof newAreaMenu" shape="poly" alt="Left Elbow" coords="207,248,216,241,227,237,242,234,250,254,256,263,243,274,230,278,210,276" 
+                            style="outline:none;" target="_self">
+                        <area id="lla" class="clickProof newAreaMenu" shape="poly" alt="Left Lower Arm" coords="211,276,228,277,245,274,256,262,273,291,282,322,282,346,267,347,258,351,249,356,226,322,216,299" 
+                            style="outline:none;" target="_self">
+                        <area id="lh" class="clickProof newAreaMenu" shape="poly" alt="Left Hand" coords="250,357,261,348,279,345,282,357,297,364,314,384,324,399,318,402,311,401,299,388,300,425,289,438,278,438,270,432,256,391" 
+                            style="outline:none;" target="_self">
+                        <area id="rs" class="clickProof newAreaMenu" shape="poly" alt="Right Shoulder" coords="90,119,90,132,71,148,64,167,62,189,63,202,48,202,28,201,26,176,34,148,43,135,66,124" 
+                            style="outline:none;" target="_self">
+                        <area id="rua" class="clickProof newAreaMenu" shape="poly" alt="Right Upper Arm" coords="30,199,49,202,64,201,69,223,66,248,48,245,27,247,23,233" 
+                            style="outline:none;" target="_self">
+                        <area id="re" class="clickProof newAreaMenu" shape="poly" alt="Right Elbow" coords="27,247,42,245,60,246,65,256,60,267,60,290,41,290,21,286" 
+                            style="outline:none;" target="_self">
+                        <area id="rla" class="clickProof newAreaMenu" shape="poly" alt="Right Lower Arm" coords="20,288,39,290,60,289,62,314,54,348,39,347,23,350,20,325" 
+                            style="outline:none;" target="_self">
+                        <area id="rh" class="clickProof newAreaMenu" shape="poly" alt="Right Hand" coords="23,349,37,347,54,348,51,375,61,411,48,411,42,403,42,429,43,453,30,453,20,446,13,414" 
+                            style="outline:none;" target="_self">
+                        <area id="groin" class="clickProof newAreaMenu" shape="poly" alt="Groin" coords="117,347,129,351,143,351,157,344,148,376,138,389,127,378,119,364" 
+                            style="outline:none;" target="_self">
+                        <area id="lhip" class="clickProof newAreaMenu" shape="poly" alt="Left Hip" coords="141,387,146,375,154,355,155,347,172,330,196,303,205,327,212,353,214,381,199,372,177,372,156,378" 
+                            style="outline:none;" target="_self">
+                        <area id="lt" class="clickProof newAreaMenu" shape="poly" alt="Left Thigh" coords="140,387,159,376,180,371,199,373,213,381,210,424,201,460,190,490,170,484,163,484,147,489,142,445" 
+                            style="outline:none;" target="_self">
+                        <area id="lk" class="clickProof newAreaMenu" shape="poly" alt="Left Kneecap" coords="146,488,162,484,189,488,185,513,188,538,167,545,150,545,142,523"
+                            style="outline:none;" target="_self">
+                        <area id="lc" class="clickProof newAreaMenu" shape="poly" alt="Left Calf" coords="148,543,168,546,187,542,196,570,195,592,187,625,171,674,160,672,147,675,144,675,142,625,141,598" 
+                            style="outline:none;" target="_self">
+                        <area id="lf" class="clickProof newAreaMenu" shape="poly" alt="Left Foot" coords="144,675,154,673,171,674,172,695,186,717,141,718,141,693" 
+                            style="outline:none;" target="_self">
+                        <area id="rhip" class="clickProof newAreaMenu" shape="poly" alt="Right Hip" coords="72,303,92,324,116,349,117,361,132,385,105,377,90,376,66,382,66,348" 
+                            style="outline:none;" target="_self">
+                        <area id="rt" class="clickProof newAreaMenu" shape="poly" alt="Right Thigh" coords="67,382,89,377,106,376,135,386,137,433,133,488,108,486,85,494,69,445" 
+                            style="outline:none;" target="_self">
+                        <area id="rk" class="clickProof newAreaMenu" shape="poly" alt="Right Kneecap" coords="84,493,104,485,132,487,133,514,123,546,81,544" 
+                            style="outline:none;" target="_self">
+                        <area id="rc" class="clickProof newAreaMenu" shape="poly" alt="Right Calf" coords="83,544,124,548,131,598,125,631,132,673,117,672,105,674,87,623,78,588,76,565" 
+                            style="outline:none;" target="_self">
+                        <area id="rf" class="clickProof newAreaMenu" shape="poly" alt="Right foot" coords="105,674,117,671,131,674,128,696,130,716,81,717,81,708,98,698" 
+                            style="outline:none;" target="_self">
+                </map>
+                <canvas id="canvas" width="332" height="727"></canvas>
+                <canvas id="canvasHitTable" width="332" height="727"></canvas>
+        
+
+            </div>
+            <div id="column_two_row_one" class="col-xs-6 col-lg-4">
+                <table class="table table-sm">    
+                    <caption class="caption">Skydd för kroppsdelarna (Krossskada / Huggskada /Stickskada)</caption>      
+                    <tr>
+                        <td class="row1"></td>
+                        <td class="row2"></td>
+                        <td class="row3" id="table_skull_title">Skalle:</td>
+                        <td class="right-border row4" id="skull_input"></td>
+                        <td class="row5"></td>
+                        <td class="row6"></td>
+                    </tr>               
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td id="table_face_title">Ansikte:</td>
+                        <td class="right-border"id="face_input"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>VÄNSTER</th>
+                        <th></th>
+                        <td id="table_neck_title">Hals:</td>
+                        <td class="right-border" id="neck_input"></td>
+                        <th>HÖGER</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td id="table_ls_title">Axel:</td>
+                        <td class="right-border" id="ls_input"></td>
+                        <td></td>
+                        <td></td>
+                        <td id="table_rs_title">Axel:</td>
+                        <td class="right-border"id ="rs_input"></td>
+                    </tr>
+                    <tr>
+                        <td id="table_lua_title">Överarm:</td>
+                        <td class="right-border" id="lua_input"></td>
+                        <td id="table_chest_title">Bröst:</td>
+                        <td class="right-border" id="chest_input"></td>
+                        <td id="table_rua_title">Överarm:</td>
+                        <td class="right-border" id="rua_input"></td>
+                    </tr>
+                    <tr>
+                        <td id="table_le_title">Armbåge:</td>
+                        <td class="right-border" id="le_input"></td>
+                        <td id="table_stomach_title">Mage:</td>
+                        <td class="right-border" id="stomach_input"></td>
+                        <td id="table_re_title">Armbåge:</td>
+                        <td class="right-border" id="re_input"></td>
+                    </tr>
+                    <tr>
+                        <td id="table_lla_title">Underarm:</td>
+                        <td class="right-border" id="lla_input"></td>
+                        <td></td>
+                        <td></td>
+                        <td id="table_rla_title">Underarm:</td>
+                        <td class="right-border" id="rla_input"></td>
+                    </tr>
+                    <tr>
+                        <td id="table_lh_title">Hand:</td>
+                        <td class="right-border" id="lh_input"></td>
+                        <td></td>
+                        <td></td>
+                        <td id="table_rh_title">Hand:</td>
+                        <td class="right-border" id="rh_input"></td>
+                    </tr>
+                    <tr>
+                        <td id="table_lhip_title">Höft:</td>
+                        <td class="right-border" id="lhip_input"></td>
+                        <td id="table_groin_title">Skrev:</td>
+                        <td class="right-border" id="groin_input"></td>
+                        <td id="table_rhip_title">Höft:</td>
+                        <td class="right-border" id="rhip_input"></td>
+                    </tr>
+                    <tr>
+                        <td id="table_lt_title">Lår:</td>
+                        <td class="right-border" id="lt_input"></td>
+                        <td></td>
+                        <td></td>
+                        <td id="table_rt_title">Lår:</td>
+                        <td class="right-border" id="rt_input"></td>
+                    </tr>
+                    <tr>
+                        <td id="table_lk_title">Knä:</td>
+                        <td class="right-border" id="lk_input"></td>
+                        <td></td>
+                        <td></td>
+                        <td id="table_rk_title">Knä:</td>
+                        <td class="right-border" id="rk_input"></td>
+                    </tr>
+                    <tr>
+                        <td id="table_lc_title">Vad:</td>
+                        <td class="right-border" id="lc_input"></td>
+                        <td></td>
+                        <td></td>
+                        <td id="table_rc_title">Vad:</td>
+                        <td class="right-border" id="rc_input"></td>
+                    </tr>
+                    <tr>
+                        <td id="table_lf_title">Fot:</td>
+                        <td class="right-border" id="lf_input"></td>
+                        <td></td>
+                        <td></td>
+                        <td id="table_rf_title">Fot:</td>
+                        <td class="right-border" id="rf_input"></td>
+                    </tr>
+                </table>
+                <div id="hitResult">
+                    <p id="humanoidResult"></p>
+                    <p id="activeProtection"></p>
+                </div>
+                <div id="armor_pieces_listed">
+                    <h4>Rustningsdelar:</h4>
+                    <p id="innerLayerArrayInsert">1</p>
+                    <p id="middleLayerArrayInsert">2</p>
+                    <p id="outerLayerArrayInsert">3</p>
+                    <p id="extraLayerArrayInsert">4</p>
+                </div>
+            </div>          
+        </div>
+    </div>   
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    
+    <script src="script/armor_script.js"></script>
+    <script src="script/armorEventsMenues.js"></script>
+    <script src="script/armor_data.js"></script>
+    <script src="script/hittable.js"></script>
+    <!-- <script src="script/form_input.js"></script> -->
+    <script src="script/dropdowns.js"></script>
+</body>
+</html>
